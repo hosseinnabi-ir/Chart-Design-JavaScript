@@ -1,0 +1,133 @@
+:root {
+    --color-primary: #44d4fd;
+    --color-label: #a7a7a7;
+    --color-text: #e2dede;
+    --font-family: "Montserrat";
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    height: 100vh;
+    display: grid;
+    place-items: center;
+    background: var(--color-primary);
+    font-family: var(--font-family);
+}
+
+.card {
+    position: relative;
+    width: 360px;
+    padding: 30px;
+    border-radius: 24px;
+    background: #1b1b1b;
+    box-shadow: 0 50px 100px rgba(0, 0, 0, .08);
+}
+
+.card h2 {
+    color: #f9f9f9;
+    font-size: 26px;
+    font-weight: 500;
+    letter-spacing: .5px;
+    margin: 0 0 2px;
+}
+
+.card p {
+    color: var(--color-text);
+    font-size: 14px;
+    margin: 0 0 16px;
+}
+
+.card .pulse {
+    position: absolute;
+    top: 52px;
+    right: 40px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--color-primary);
+}
+
+.card .pulse::after {
+    content: '';
+    position: absolute;
+    left: -1px;
+    top: -1px;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: .1px solid var(--color-primary);
+    animation: pulse 3s linear infinite;
+    transform-origin: center;
+    opacity: .8;
+    scale: 0;
+}
+
+@keyframes pulse {
+
+    70% {
+        scale: 0;
+        opacity: .8;
+    }
+
+    100% {
+        scale: 3;
+        opacity: 0;
+    }
+
+}
+
+.card .area-chart {
+    position: relative;
+}
+
+.card .area-chart .grid {
+    position: absolute;
+    z-index: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80%;
+    background-image: repeating-linear-gradient(
+        to right,
+        transparent 0% 3%,
+        #f9f9f9 3% 3.5%,
+        transparent 3% 18.65%
+    );
+}
+
+.card .area-chart .grid::after {
+    content: '';
+    position: inherit;
+    z-index: 1;
+    top: inherit;
+    bottom: inherit;
+    width: inherit;
+    height: 100%;
+    background: linear-gradient(
+        180deg,
+        rgba(27, 27, 27, 1),
+        rgba(27, 27, 27, .9),
+        rgba(27, 27, 27, 1)
+    );
+}
+
+body .apexcharts-tooltip.apexcharts-theme-light {
+    color: var(--color-text);
+    background: rgba(0, 0, 0, .5);
+    backdrop-filter: blur(10px);
+    box-shadow: none;
+    padding: 8px 6px 4px;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: .5px;
+    border: 0;
+}
+
+.apexcharts-tooltip-title,
+.apexcharts-xaxistooltip-bottom.apexcharts-theme-light {
+    display: none;
+}
